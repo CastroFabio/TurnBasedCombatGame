@@ -1,0 +1,14 @@
+D:\Programação\Projetos C#\TurnBasedCombatGame\bin\Debug\net9.0\TurnBasedCombatGame.exe
+D:\Programação\Projetos C#\TurnBasedCombatGame\bin\Debug\net9.0\TurnBasedCombatGame.deps.json
+D:\Programação\Projetos C#\TurnBasedCombatGame\bin\Debug\net9.0\TurnBasedCombatGame.runtimeconfig.json
+D:\Programação\Projetos C#\TurnBasedCombatGame\bin\Debug\net9.0\TurnBasedCombatGame.dll
+D:\Programação\Projetos C#\TurnBasedCombatGame\bin\Debug\net9.0\TurnBasedCombatGame.pdb
+D:\Programação\Projetos C#\TurnBasedCombatGame\obj\Debug\net9.0\TurnBasedCombatGame.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programação\Projetos C#\TurnBasedCombatGame\obj\Debug\net9.0\TurnBasedCombatGame.AssemblyInfoInputs.cache
+D:\Programação\Projetos C#\TurnBasedCombatGame\obj\Debug\net9.0\TurnBasedCombatGame.AssemblyInfo.cs
+D:\Programação\Projetos C#\TurnBasedCombatGame\obj\Debug\net9.0\TurnBasedCombatGame.csproj.CoreCompileInputs.cache
+D:\Programação\Projetos C#\TurnBasedCombatGame\obj\Debug\net9.0\TurnBasedCombatGame.dll
+D:\Programação\Projetos C#\TurnBasedCombatGame\obj\Debug\net9.0\refint\TurnBasedCombatGame.dll
+D:\Programação\Projetos C#\TurnBasedCombatGame\obj\Debug\net9.0\TurnBasedCombatGame.pdb
+D:\Programação\Projetos C#\TurnBasedCombatGame\obj\Debug\net9.0\TurnBasedCombatGame.genruntimeconfig.cache
+D:\Programação\Projetos C#\TurnBasedCombatGame\obj\Debug\net9.0\ref\TurnBasedCombatGame.dll
