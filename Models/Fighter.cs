@@ -8,35 +8,31 @@ namespace TurnBasedCombatGame.Models
     public class Fighter : Character
     {
         bool HasActionSurge = true;
+        int ExtraAttackCount = 2;
         bool HasExtraAttack = true;
 
         public Fighter(string name)
             : base(name) { }
 
-        public bool CanUseExtraAttack()
-        {
-            if (HasExtraAttack)
-            {
-                HasExtraAttack = false;
-                return true;
-            }
-            return false;
-        }
-
         public void ExtraAttack(Character target)
         {
-            int temp = AttackPowerMin;
-            if (AttackPowerMin + 10 > AttackPowerMax)
+            int temp = AttackPowerMax;
+            ExtraAttackCount = 0;
+            HasExtraAttack = false;
+            if (AttackPowerMax - 5 < AttackPowerMin)
             {
-                AttackPowerMin = AttackPowerMax - 1;
                 BasicAttack(target);
-                AttackPowerMin = temp;
+                AttackPowerMax = AttackPowerMin + 1;
+                BasicAttack(target);
+                AttackPowerMax = temp;
 
                 return;
             }
-            AttackPowerMin += 10;
+
             BasicAttack(target);
-            AttackPowerMin -= 10;
+            AttackPowerMax -= 5;
+            BasicAttack(target);
+            AttackPowerMax += 5;
         }
 
         public void ActionSurge(Character target)
@@ -44,6 +40,7 @@ namespace TurnBasedCombatGame.Models
             if (HasActionSurge)
             {
                 HasActionSurge = false;
+
                 BasicAttack(target);
                 return;
             }
@@ -58,11 +55,13 @@ namespace TurnBasedCombatGame.Models
 
         public override void PassouTurno()
         {
-            HasExtraAttack = true;
-            HasActionSurge = true;
+            if (ExtraAttackCount <= 2)
+                ExtraAttackCount++;
+            if (ExtraAttackCount == 2)
+                HasExtraAttack = true;
         }
 
-        public void EscolherAcoes(Character target)
+        public override void EscolherAcoes(Character target)
         {
             ListaDeAcoes();
             Console.WriteLine($"Qual ataque você deseja usar?");
@@ -74,9 +73,9 @@ namespace TurnBasedCombatGame.Models
                     BasicAttack(target);
                     break;
                 case "2":
-                    if (CanUseExtraAttack())
+                    if (HasExtraAttack)
                     {
-                        Console.WriteLine("Usando Extra Attack!");
+                        Console.WriteLine("Extra Attack!");
                         ExtraAttack(target);
                         break;
                     }

@@ -8,6 +8,7 @@ namespace TurnBasedCombatGame.Models
     public class Paladin : Character
     {
         public bool HasDivineSmite = true;
+        public int DivineSmiteCount = 2;
 
         public Paladin(string name)
             : base(name) { }
@@ -18,18 +19,11 @@ namespace TurnBasedCombatGame.Models
             Console.WriteLine("2 - Divine Smite");
         }
 
-        public bool CanUseDivineSmite()
-        {
-            if (HasDivineSmite)
-            {
-                HasDivineSmite = false;
-                return true;
-            }
-            return false;
-        }
-
         public void DivineSmite(Character target)
         {
+            HasDivineSmite = false;
+            DivineSmiteCount = 0;
+
             AttackPowerMax += 10;
             BasicAttack(target);
             AttackPowerMax -= 10;
@@ -37,10 +31,13 @@ namespace TurnBasedCombatGame.Models
 
         public override void PassouTurno()
         {
-            HasDivineSmite = true;
+            if (DivineSmiteCount <= 2)
+                DivineSmiteCount++;
+            if (DivineSmiteCount == 2)
+                HasDivineSmite = true;
         }
 
-        public void EscolherAcoes(Character target)
+        public override void EscolherAcoes(Character target)
         {
             ListaDeAcoes();
             Console.WriteLine($"Qual ataque você deseja usar?");
@@ -52,7 +49,7 @@ namespace TurnBasedCombatGame.Models
                     BasicAttack(target);
                     break;
                 case "2":
-                    if (CanUseDivineSmite())
+                    if (HasDivineSmite)
                     {
                         Console.WriteLine("DIVINE SMITE!");
                         DivineSmite(target);

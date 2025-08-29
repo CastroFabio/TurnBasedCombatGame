@@ -74,6 +74,8 @@ namespace TurnBasedCombatGame.Models
 
         public virtual void ListaDeAcoes() { }
 
+        public virtual void EscolherAcoes(Character target) { }
+
         public virtual void PassouTurno() { }
     }
 }
