@@ -8,7 +8,6 @@ namespace TurnBasedCombatGame.Models
     public class Character
     {
         private static Random random = new Random();
-        public string characterClass { get; set; }
         public string Name { get; set; }
         public int HitPoints { get; set; }
         public int MaxHitPoints { get; set; }
@@ -17,12 +16,11 @@ namespace TurnBasedCombatGame.Models
         public int Defense { get; set; }
         public int Speed { get; set; }
 
-        public Character(string name, string charClass)
+        public Character(string name)
         {
             Name = name;
-            characterClass = charClass;
             AttackPowerMin = random.Next(10, 21);
-            AttackPowerMax = random.Next(AttackPowerMin, AttackPowerMin + 11);
+            AttackPowerMax = random.Next(AttackPowerMin, AttackPowerMin + 31);
             Defense = random.Next(5, 16);
             Speed = random.Next(1, 21);
             MaxHitPoints = 100;
@@ -39,21 +37,25 @@ namespace TurnBasedCombatGame.Models
             return random.Next(1, 21) == 20 ? true : false;
         }
 
-        public void Attack(Character target)
+        public void BasicAttack(Character target)
         {
             bool isCritical = IsCriticalHit();
 
             int AttackPower = isCritical
                 ? random.Next(AttackPowerMin, AttackPowerMax + 1) * 2
                 : random.Next(AttackPowerMin, AttackPowerMax + 1);
+
             int damage = AttackPower - target.Defense;
+
             Console.WriteLine(isCritical ? "CRITICAL HIT!" : "");
             Console.WriteLine(
                 $"{Name} (ATK: {AttackPower}) vs {target.Name} (DEF: {target.Defense})"
             );
+
             if (damage < 0)
-                damage = 0;
+                damage = 1;
             target.HitPoints -= damage;
+
             if (target.HitPoints < 0)
                 target.HitPoints = 0;
         }
@@ -61,13 +63,17 @@ namespace TurnBasedCombatGame.Models
         public void Apresentar()
         {
             Console.WriteLine(
-                $"Nome: {Name.ToUpper()}\nClasse: {characterClass}\nHP: {HitPoints}/{MaxHitPoints}\nAtaque Min: {AttackPowerMin}\nAtaque Max: {AttackPowerMax}\nDefesa: {Defense}\nVelocidade: {Speed}"
+                $"{Name.ToUpper()}\nHP: {HitPoints}/{MaxHitPoints}\nAtaque Max: {AttackPowerMax}\nAtaque Min: {AttackPowerMin}\nDefesa: {Defense}\nVelocidade: {Speed}"
             );
         }
 
         public void ApresentarSimplificado()
         {
-            Console.WriteLine($"Nome: {Name.ToUpper()}\nHP: {HitPoints}/{MaxHitPoints}");
+            Console.WriteLine($"Nome: {Name.ToUpper()} ({HitPoints}/{MaxHitPoints})");
         }
+
+        public virtual void ListaDeAcoes() { }
+
+        public virtual void PassouTurno() { }
     }
 }

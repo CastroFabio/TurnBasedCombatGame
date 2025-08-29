@@ -12,3 +12,4 @@ D:\Programação\Projetos C#\TurnBasedCombatGame\obj\Debug\net9.0\refint\TurnBas
 D:\Programação\Projetos C#\TurnBasedCombatGame\obj\Debug\net9.0\TurnBasedCombatGame.pdb
 D:\Programação\Projetos C#\TurnBasedCombatGame\obj\Debug\net9.0\TurnBasedCombatGame.genruntimeconfig.cache
 D:\Programação\Projetos C#\TurnBasedCombatGame\obj\Debug\net9.0\ref\TurnBasedCombatGame.dll
+D:\Programação\Projetos C#\TurnBasedCombatGame\obj\Debug\net9.0\TurnBasedCombatGame.sourcelink.json
